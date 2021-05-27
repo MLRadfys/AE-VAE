@@ -57,7 +57,7 @@ class Decoder(nn.Module):
 Now that we have both the encoder and the decoder, we can combine the two sub-models into the final autoencoder.
 
 ```python
-class AE(nn-Module):
+class AE(nn.Module):
     def __init__(self, latent_dim):
         super(AE, self).__init__()
         self.encoder = self.Encoder(latent_dim)
