@@ -84,7 +84,11 @@ def train(ae, data, epochs=20):
             optimizer.step()
     return ae
 ```
-Once our model is trained, we want to test in on some data and see if the autoencoder is able to map an input image x to a latent space representation, and reconstruct the image given a latent space vector.
+Once our model is trained, we can use our trained autoencoder for a couple of different tasks:
+
+1. Input an image x to the encoder, map x to the latent space z with the help of the learned non-linear function, and decode the image to hat{x}. 
+2. As we are dealing with 2D data, we can visualize the latent space.
+3. Sample from the latent space.
 
 ```python
 def reconstruct_image(ae, r0=(-5, 10), r1=(-10, 5), n=12):
@@ -100,6 +104,16 @@ def reconstruct_image(ae, r0=(-5, 10), r1=(-10, 5), n=12):
 ```
 
 ![Image Autoencoder 1](https://github.com/MichaelLempart/AE-VAE/blob/gh-pages/resources/Img1_AE.JPG)
+
+def plot_latent(ae, data, num_batches=100):
+    for i, (x,  y) in enumerate(data):
+        z = ae.encoder(x.to(device))
+        z = z.to('cpu').detach().numpy()
+        plt.scatter(z[:, 0], z[:, 1], c=y, cmap='tab10')
+        if i > num_batches:
+            plt.colorbar()
+            break
+    plt.show()
 ![Image Autoencoder 2](https://github.com/MichaelLempart/AE-VAE/blob/gh-pages/resources/Img2_AE.JPG)
 
 Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
