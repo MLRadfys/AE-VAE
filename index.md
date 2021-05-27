@@ -100,6 +100,7 @@ def reconstruct_image(ae, r0=(-5, 10), r1=(-10, 5), n=12):
 ```
 
 ![Image Autoencoder 1](https://github.com/MichaelLempart/AE-VAE/blob/gh-pages/resources/Img1_AE.JPG) "Autoencoder image 1"!
+![Image Autoencoder 2](https://github.com/MichaelLempart/AE-VAE/blob/gh-pages/resources/Img2_AE.JPG) "Autoencoder image 2"!
 
 Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
