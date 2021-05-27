@@ -4,6 +4,20 @@ On this page I will present the basic principles of autoencoders (AE) and variat
 
 ### Autoencoders (AE)
 
+### Autencoders in PyTorch
+
+We now learn how to setup an autoencoder in PyTorch and train in on the MNIST dataset.
+The first thing we will do is to import all libraries and packages we need.
+
+```python
+#import libraries
+import torch
+import torch.nn as nn
+import torch.Functional as F
+```
+
+
+
 Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
 ```markdown
