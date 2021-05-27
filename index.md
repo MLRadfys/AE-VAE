@@ -1,4 +1,4 @@
-you can use an inline formula $$\forall x \in R$$ like this one
+<img src="https://render.githubusercontent.com/render/math?math=e^{i \pi} = -1">
     
 ## A tutorial on Autoencoders and Variational Autoencoders
 
