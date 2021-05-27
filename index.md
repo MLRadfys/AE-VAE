@@ -231,8 +231,30 @@ After training, we repeat our experiments. We create a 2D scatterplot of the lat
 
 ![Image](https://github.com/MichaelLempart/AE-VAE/blob/gh-pages/resources/Img1_VAE.JPG)
 
-We can observe that the latent space variabels are much closer to each other and seem to be more similar to a Gaussian distribution. Like for the autoencoder, digits that are similar are mapped next to each other.
+We can observe that the latent space variabels are much closer to each other and seem to be more similar to a Gaussian distribution. Like for the autoencoder, digits that are similar are mapped next to each other. Overall the latent space is much smoother and more compact when compared to the autoencoder.
 
 ![Image](https://github.com/MichaelLempart/AE-VAE/blob/gh-pages/resources/Img2_VAE.JPG)
 
 When we sample from the latent space, we can generate digit-like images, which position correspond to the position of the 2D scatter plot.
+
+### Latent space interpolation
+
+Another interesting thing is that we can interpolating linearly between two latent variables given their corresponding input images.
+
+```python
+def interpolate(autoencoder, x_1, x_2, n=12):
+    z_1 = autoencoder.encoder(x_1)
+    z_2 = autoencoder.encoder(x_2)
+    z = torch.stack([z_1 + (z_2 - z_1)*t for t in np.linspace(0, 1, n)])
+    interpolate_list = autoencoder.decoder(z)
+    interpolate_list = interpolate_list.to('cpu').detach().numpy()
+
+    w = 28
+    img = np.zeros((w, n*w))
+    for i, x_hat in enumerate(interpolate_list):
+        img[:, i*w:(i+1)*w] = x_hat.reshape(28, 28)
+    plt.imshow(img)
+    plt.xticks([])
+    plt.yticks([])
+    plt.show()
+```
