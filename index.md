@@ -1,8 +1,6 @@
-## Welcome to GitHub Pages
+## A tutorial on Autoencoders and Variational Autoencoders
 
-You can use the [editor on GitHub](https://github.com/MichaelLempart/AE-VAE/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
-
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+On this page I will present the basic principles of autoencoders and variational autoencoders.
 
 ### Markdown
 
