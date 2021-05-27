@@ -109,7 +109,9 @@ def plot_latent(ae, data, num_batches=100):
 ![Image](https://github.com/MichaelLempart/AE-VAE/blob/gh-pages/resources/Img1_AE.JPG)
 
 We see that similar digits are plottet next to each other, i.eg. the digit 0 and the digit 6.
-Now we can sample from the latent space
+
+From the 2D plot, we got a grasp on where the latent space is. Lets use this knowledge and sample from a the space.
+
 
 ```python
 def reconstruct_image(ae, r0=(-5, 10), r1=(-10, 5), n=12):
@@ -124,35 +126,7 @@ def reconstruct_image(ae, r0=(-5, 10), r1=(-10, 5), n=12):
     plt.imshow(img, extent=[*r0, *r1])
 ```
 
-
 ![Image](https://github.com/MichaelLempart/AE-VAE/blob/gh-pages/resources/Img2_AE.JPG)
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Variational autoencoders (VAE)
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/MichaelLempart/AE-VAE/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+We can see that we actually got digit looking images, even though not all of them are perfect.
+Another cool thing is that the digit position actually corresponds to the position in the 2D scatter plot.
