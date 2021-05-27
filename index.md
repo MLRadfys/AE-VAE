@@ -1,5 +1,4 @@
-<img src="https://render.githubusercontent.com/render/math?math=e^{i \pi} = -1">
-    
+
 ## A tutorial on Autoencoders and Variational Autoencoders
 
 On this page I will present the basic principles of autoencoders (AE) and variational autoencoders (VAE) and show how these two types of model archtectures and be implementent in Pytorch an trained on the famous MNIST dataset.
@@ -88,7 +87,9 @@ def train(ae, data, epochs=20):
 ```
 Once our model is trained, we can use our trained autoencoder for a couple of different tasks:
 
-1. Input an image x to the encoder, map x to the latent space z with the help of the learned non-linear function, and decode the image to $$\hat{x}$$. 
+1. Input an image x to the encoder, map x to the latent space z with the help of the learned non-linear function, and decode the image to <img src=
+"https://render.githubusercontent.com/render/math?math=%5Ctextstyle+%5Chat%7Bx%7D" 
+alt="\hat{x}">.
 2. As we are dealing with 2D data, we can visualize the latent space.
 3. Sample from the latent space.
 
