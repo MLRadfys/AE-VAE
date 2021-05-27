@@ -90,8 +90,28 @@ Once our model is trained, we can use our trained autoencoder for a couple of di
 1. Input an image x to the encoder, map x to the latent space z with the help of the learned non-linear function, and decode the image to <img src=
 "https://render.githubusercontent.com/render/math?math=%5Ctextstyle+%5Chat%7Bx%7D" 
 alt="\hat{x}">.
-2. As we are dealing with 2D data, we can visualize the latent space.
-3. Sample from the latent space.
+2. As we are dealing with a 2-dimensional latent space, we can visualize the latent space by using a scatter plot.
+3. Finally, we can sample from the latent space.
+
+Lets start by visualizing the latent space with a scatter plot.
+
+```python
+def plot_latent(ae, data, num_batches=100):
+    for i, (x,  y) in enumerate(data):
+        z = ae.encoder(x.to(device))
+        z = z.to('cpu').detach().numpy()
+        plt.scatter(z[:, 0], z[:, 1], c=y, cmap='tab10')
+        if i > num_batches:
+            plt.colorbar()
+            break
+    plt.show()
+```
+
+
+
+![Image](https://github.com/MichaelLempart/AE-VAE/blob/gh-pages/resources/Img1_AE.JPG)
+
+We see that similar digits are plottet next to each other.
 
 ```python
 def reconstruct_image(ae, r0=(-5, 10), r1=(-10, 5), n=12):
@@ -106,19 +126,6 @@ def reconstruct_image(ae, r0=(-5, 10), r1=(-10, 5), n=12):
     plt.imshow(img, extent=[*r0, *r1])
 ```
 
-![Image](https://github.com/MichaelLempart/AE-VAE/blob/gh-pages/resources/Img1_AE.JPG)
-
-```python
-def plot_latent(ae, data, num_batches=100):
-    for i, (x,  y) in enumerate(data):
-        z = ae.encoder(x.to(device))
-        z = z.to('cpu').detach().numpy()
-        plt.scatter(z[:, 0], z[:, 1], c=y, cmap='tab10')
-        if i > num_batches:
-            plt.colorbar()
-            break
-    plt.show()
-```
 
 ![Image](https://github.com/MichaelLempart/AE-VAE/blob/gh-pages/resources/Img2_AE.JPG)
 
