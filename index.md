@@ -86,7 +86,7 @@ def train(ae, data, epochs=20):
 ```
 Once our model is trained, we can use our trained autoencoder for a couple of different tasks:
 
-1. Input an image x to the encoder, map x to the latent space z with the help of the learned non-linear function, and decode the image to hat{x}. 
+1. Input an image x to the encoder, map x to the latent space z with the help of the learned non-linear function, and decode the image to $\hat{a}$. 
 2. As we are dealing with 2D data, we can visualize the latent space.
 3. Sample from the latent space.
 
