@@ -1,6 +1,6 @@
 ## A tutorial on Autoencoders and Variational Autoencoders
 
-On this page I will present the basic principles of autoencoders (AE) and variational autoencoders (VAE) and show implementations in Pytorch using the MNIST dataset.
+On this page I will present the basic principles of autoencoders (AE) and variational autoencoders (VAE) and show how these two types of model archtectures and be implementent in Pytorch an trained on the famous MNIST dataset.
 
 ### Autoencoders (AE)
 
