@@ -68,6 +68,39 @@ class AE(nn.Module):
         x_hat = self.decoder(z)
         return x_hat
 ```
+
+We just finished the model of our first autoencoder in PyTorch! The next thing we want to do is to import the MNIST dataset and train the autoencoder. We will only implement a very quick and easy training loop and use the whole dataset for training (without splitting it into validation/test).
+
+```python
+def train(ae, data, epochs=20):
+    optimizer = torch.optim.Adam(ae.parameters())
+    for epoch in range(epochs):
+        for x, y in data:
+            x = x.to(device)
+            optimizer.zero_grad()
+            x_hat = ae(x)
+            loss = ((x - x_hat)**2).sum()
+            loss.backward()
+            optimizer.step()
+    return ae
+```
+Once our model is trained, we want to test in on some data and see if the autoencoder is able to map an input image x to a latent space representation, and reconstruct the image given a latent space vector.
+
+```python
+def reconstruct_image(ae, r0=(-5, 10), r1=(-10, 5), n=12):
+    w = 28
+    img = np.zeros((n*w, n*w))
+    for i, y in enumerate(np.linspace(*r1, n)):
+        for j, x in enumerate(np.linspace(*r0, n)):
+            z = torch.Tensor([[x, y]]).to(device)
+            x_hat = ae.decoder(z)
+            x_hat = x_hat.reshape(28, 28).to('cpu').detach().numpy()
+            img[(n-1-i)*w:(n-1-i+1)*w, j*w:(j+1)*w] = x_hat
+    plt.imshow(img, extent=[*r0, *r1])
+```
+
+
+
 Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
 ```markdown
