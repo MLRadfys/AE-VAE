@@ -130,3 +130,7 @@ def reconstruct_image(ae, r0=(-5, 10), r1=(-10, 5), n=12):
 
 We can see that we actually got digit looking images, even though not all of them are perfect.
 Another cool thing is that the digit position actually corresponds to the position in the 2D scatter plot.
+
+### Variational Autoencoders (VAE)
+
+### Variational autencoders in PyTorch
