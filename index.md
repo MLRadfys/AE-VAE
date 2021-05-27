@@ -105,6 +105,7 @@ def reconstruct_image(ae, r0=(-5, 10), r1=(-10, 5), n=12):
 
 ![Image](https://github.com/MichaelLempart/AE-VAE/blob/gh-pages/resources/Img1_AE.JPG)
 
+```python
 def plot_latent(ae, data, num_batches=100):
     for i, (x,  y) in enumerate(data):
         z = ae.encoder(x.to(device))
@@ -114,6 +115,8 @@ def plot_latent(ae, data, num_batches=100):
             plt.colorbar()
             break
     plt.show()
+```
+
 ![Image](https://github.com/MichaelLempart/AE-VAE/blob/gh-pages/resources/Img2_AE.JPG)
 
 Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
