@@ -134,3 +134,105 @@ Another cool thing is that the digit position actually corresponds to the positi
 ### Variational Autoencoders (VAE)
 
 ### Variational autencoders in PyTorch
+
+Now that we know how to build an autoencoder in PyTorch, lets code a variational autoencder.
+As before, we start with the encoder part of the VAE, which is different from the autoencoder that we have seen before.
+
+Now we have to add the mean and the standard deviation, and we have to implement the reparametrization trick, so that we can use backpropagation.
+We will also add the KL divergence term in the encoder class and add the loss to the reconstruction loss.
+
+```python
+class Encoder_VAE(nn.Module):
+    def __init__(self, latent_dim):
+        super(Encoder_VAE, self).__init__()
+        self.linear1 = nn.Linear(784, 512)
+        self.linear2 = nn.Linear(512, latent_dim)
+        self.linear3 = nn.Linear(512, latent_dim)
+
+        self.N = torch.distributions.Normal(0,1)
+        #self.N.loc = self.N.loc.cuda() #for GPU
+        #self.N.scale = self.N.scale.cuda()
+
+        self.kl = 0
+    
+    def forward(self, x):
+        x = torch.flatten(x, start_dim = 1)
+        x = self.linear1(x)
+        x = F.relu(x)
+        #get the mean values (one for each latent space dimension)
+        mu = self.linear2(x)
+        #get sigma
+        sigma = self.linear3(x)
+        sigma = torch.exp(sigma)
+        #Reparametrization trick (sample from standard notmal distribution and scale and shift)
+        z = mu + sigma*self.N.sample(mu.shape)
+
+        #compute the KL divergence
+        self.kl = (sigma**2 + mu**2 - torch.log(sigma) - 1/2).sum()
+
+        return z
+``` 
+
+The decoder part of the VAE is exactly the same as before and we can just copy and past the code.
+
+```python
+class Decoder(nn.Module):
+    def __init__(self, latent_dim):
+        super(Decoder, self).__init__()
+        self.linear1 = nn.Linear(latent_dim,512)
+        self.linear2 = nn.Linear(512, 784)
+
+    def forward(self,z):
+        z = self.linear1(z)
+        z = F.relu(z)
+        z = self.linear2(z)
+        z = torch.sigmoid(z)
+        z = z.reshape((-1,1,28,28))
+        return z
+```
+
+Combining the variational encoder and the decoder, gives us the complete model of a variational autoencoder.
+
+```python
+class VAE(nn.Module):
+    def __init__(self, latent_dim):
+        super(VAE, self).__init__()
+        self.encoder = Encoder_VAE(latent_dim)
+        self.decoder = Decoder(latent_dim)
+
+    def forward(self, x):
+        z = self.encoder(x)
+        x_hat = self.decoder(z)
+        return x_hat
+``` 
+
+Now that we finished our model, we have to slightly change the training loop. As we have seen before, the loss function of the variational autoencder consist of two terms, the reconstruction loss and the KL divergence. We already used the reconstruction loss when we trained the normal autoencder. We can simply take the previous training loop and att the KL divergence term to the loss.
+
+```python
+def train_vae(vae, data, epochs=20):
+    optimizer = torch.optim.Adam(vae.parameters())
+    for epoch in range(epochs):
+        loss_per_epoch = []
+        print('training epoch:', epoch)
+        for x, y in data:
+            x = x.to(device)
+            optimizer.zero_grad()
+            x_hat = vae(x)
+            #Add the KL divergence to the cost function
+            loss = ((x - x_hat)**2).sum() + vae.encoder.kl
+            loss_per_epoch.append(loss.to('cpu').detach().numpy())
+            loss.backward()
+            optimizer.step()
+        print('epoch {} done. Mean loss : {}'.format(epoch, np.mean(loss_per_epoch)))
+    return vae
+````
+
+After training, we repeat our experiments. We create a 2D scatterplot of the latent space, and we sample from the latent space.
+
+![Image](https://github.com/MichaelLempart/AE-VAE/blob/gh-pages/resources/Img1_VAE.JPG)
+
+We can observe that the latent space variabels are much closer to each other and seem to be more similar to a Gaussian distribution. Like for the autoencoder, digits that are similar are mapped next to each other.
+
+![Image](https://github.com/MichaelLempart/AE-VAE/blob/gh-pages/resources/Img2_VAE.JPG)
+
+When we sample from the latent space, we can generate digit-like images, which position correspond to the position of the 2D scatter plot.
