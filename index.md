@@ -103,7 +103,7 @@ def reconstruct_image(ae, r0=(-5, 10), r1=(-10, 5), n=12):
     plt.imshow(img, extent=[*r0, *r1])
 ```
 
-![Image Autoencoder 1](https://github.com/MichaelLempart/AE-VAE/blob/gh-pages/resources/Img1_AE.JPG)
+![Image](https://github.com/MichaelLempart/AE-VAE/blob/gh-pages/resources/Img1_AE.JPG)
 
 def plot_latent(ae, data, num_batches=100):
     for i, (x,  y) in enumerate(data):
@@ -114,7 +114,7 @@ def plot_latent(ae, data, num_batches=100):
             plt.colorbar()
             break
     plt.show()
-![Image Autoencoder 2](https://github.com/MichaelLempart/AE-VAE/blob/gh-pages/resources/Img2_AE.JPG)
+![Image](https://github.com/MichaelLempart/AE-VAE/blob/gh-pages/resources/Img2_AE.JPG)
 
 Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
