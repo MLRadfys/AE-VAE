@@ -258,3 +258,5 @@ def interpolate(autoencoder, x_1, x_2, n=12):
     plt.yticks([])
     plt.show()
 ```
+
+![Image](https://github.com/MichaelLempart/AE-VAE/blob/gh-pages/resources/Img3_VAE.JPG)
