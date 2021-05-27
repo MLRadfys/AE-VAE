@@ -1,7 +1,4 @@
-<!-- MathJax -->
-<script type="text/javascript"
-  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
+you can use an inline formula $$\forall x \in R$$ like this one
     
 ## A tutorial on Autoencoders and Variational Autoencoders
 
