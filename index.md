@@ -106,12 +106,10 @@ def plot_latent(ae, data, num_batches=100):
             break
     plt.show()
 ```
-
-
-
 ![Image](https://github.com/MichaelLempart/AE-VAE/blob/gh-pages/resources/Img1_AE.JPG)
 
-We see that similar digits are plottet next to each other.
+We see that similar digits are plottet next to each other, i.eg. the digit 0 and the digit 6.
+Now we can sample from the latent space
 
 ```python
 def reconstruct_image(ae, r0=(-5, 10), r1=(-10, 5), n=12):
