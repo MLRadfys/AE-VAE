@@ -156,12 +156,21 @@ If you want to go straight into the implementation of a VAE in PyTorch, you can 
 The key concept of a variation autoencoder is "variational inference", which is a mathematical tool used to approximate a probability distribution by another distributution that is easy to sample from.
 
 The VAE consists of hidden variables z and visible variables x (i.eg. our images). We want to say something about the probability distribution of the latent space variabels z, given samples from x (this is called for "inference" of "infer characteristics z from x").
-We can do this by using Bayes rule of probability:
+To model the probability distribution z given x, We can use Bayes rule of probability:
 
 <img src=
 "https://render.githubusercontent.com/render/math?math=%5Clarge+%5Cdisplaystyle+%7Bp%28z%7Cx%29%7D++%3D++%5Cfrac%7Bp%28x%7Cz%29p%28z%29%7D%7Bp%28x%29%7D" 
 alt="{p(z|x)}  =  \frac{p(x|z)p(z)}{p(x)}">
 
+The problem is that <img src=
+"https://render.githubusercontent.com/render/math?math=%5Clarge+%5Ctextstyle+p%28x%29" 
+alt="p(x)"> is extremely difficult to evaluate (if even possible):
+
+<img src=
+"https://render.githubusercontent.com/render/math?math=%5Clarge+%5Cdisplaystyle+p%28x%29%3D%5Cintop_%7Bz%7D+p%28x%7Cz%29p%28z%29%5Cmathrm%7Bd%7Dz+" 
+alt="p(x)=\intop_{z} p(x|z)p(z)\mathrm{d}z ">
+
+The above integral is intractable...
 
 ### Variational autencoders in PyTorch
 
