@@ -175,7 +175,15 @@ One way to solve this issue is by using variational inference, mentionend in the
 "https://render.githubusercontent.com/render/math?math=%5Clarge+%5Ctextstyle+p%28z%7Cx%29" 
 alt="p(z|x)"> by <img src=
 "https://render.githubusercontent.com/render/math?math=%5Clarge+%5Ctextstyle+q%28z%7Cx%29" 
-alt="q(z|x)">, which is a distribution we know and that we can evaluate. This new distribution is called for "variational distribution".
+alt="q(z|x)">, which is a distribution we know and that we can evaluate. This new distribution is called for "variational distribution". 
+The goal is now to make the variational distribution as close to the original distribution as possible. For that, we parametrize "https://render.githubusercontent.com/render/math?math=%5Clarge+%5Ctextstyle+q%28z%7Cx%29" 
+alt="q(z|x)"> by some learnable parameters (therefore we called it variational distribution) <img src=
+"https://render.githubusercontent.com/render/math?math=%5Clarge+%5Ctextstyle+%5Ctheta" 
+alt="\theta"> (<img src=
+"https://render.githubusercontent.com/render/math?math=%5Clarge+%5Ctextstyle+q%28z%7Cx%3B%5Ctheta%29" 
+alt="q(z|x;\theta)">).
+
+
 
 ### Variational autencoders in PyTorch
 
