@@ -153,6 +153,13 @@ The image below shows the architecture of a VAE. Like the normal autoencoder, th
 
 If you want to go straight into the implementation of a VAE in PyTorch, you can skip this part. If you are interested in the math behind a VAE, fasten your belt and continue reading....
 
+The key concept of a variation autoencoder is "variational inference", which is a mathematical tool used to approximate a probability distribution by another distributution that is easy to sample from.
+
+The VAE consists of hidden variables z and visible variables x (i.eg. our images). We want to say something about the probability distribution of the latent space variabels z, given samples from x (this is called for "inference" of "infer characteristics z from x").
+We can do this by using Bayes rule of probability:
+
+
+
 
 ### Variational autencoders in PyTorch
 
