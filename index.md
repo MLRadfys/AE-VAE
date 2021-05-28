@@ -240,6 +240,14 @@ Finally, we define -L as the Evidence Lower Bound (ELBO):
 "https://render.githubusercontent.com/render/math?math=%5Clarge+%5Cdisplaystyle+-+L+%3D+%5Clog%7Bp%28x%29%7D+-+D_%7BKL%7D%28q%7C%7Cp%29+%3D+%5Carg+%5Cmin%7BL%7D+%3D+%5Carg+%5Cmax%7B-L%7D" 
 alt="- L = \log{p(x)} - D_{KL}(q||p) = \arg \min{L} = \arg \max{-L}">
 
+From the previous mentioned properties of the KL-divergence, we know that the KL-divergence cannot be negative, it is zero or greater than this. That meansm that we can bound the KL-divergence at 0 and we can minimize the KL-divergence by mimizing the variational free energy or by maximizing the ELBO:
+
+<img src=
+"https://render.githubusercontent.com/render/math?math=%5Clarge+%5Cdisplaystyle+%5Carg+%5Cmin%7BL%7DD_%7BKL%7D%28q%7C%7Cp%29+%3D+%5Carg+%5Cmin%7BL%7D+%3D+%5Carg+%5Cmax%7B-L%7D" 
+alt="\arg \min{L}D_{KL}(q||p) = \arg \min{L} = \arg \max{-L}">
+
+Mimizing the KL-divergence means that we are able to find the parameters that make our original probability distribution and our variational probability distribution similar.
+
 
 ### Variational autencoders in PyTorch
 
