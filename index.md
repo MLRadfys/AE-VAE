@@ -188,10 +188,22 @@ But how can we measure the similarity between two probability distributions?
 The most common metrics for this is the Kullback-Leibner divergence (KL-divergence), also called for realtive entropy, which measure the distance between two distributions:
 
 <img src=
-"https://render.githubusercontent.com/render/math?math=%5Clarge+%5Cdisplaystyle++D_%7BKL%7D%28q%7C%7Cp%29+%3D++D_%7BKL%7D%28q%28z%7Cx%29%7C%7Cp%28z%7Cx%29%29+%3D++%5Cintop_%7Bx%7Dq%28x%29log%28%5Cfrac%7Bq%28x%29%7D%7Bp%28x%29%7D%5Cmathrm%7Bd%7Dx+" 
-alt=" D_{KL}(q||p) =  D_{KL}(q(z|x)||p(z|x)) =  \intop_{x}q(x)log(\frac{q(x)}{p(x)}\mathrm{d}x ">
+"https://render.githubusercontent.com/render/math?math=%5Clarge+%5Cdisplaystyle++D_%7BKL%7D%28q%7C%7Cp%29+%3D++D_%7BKL%7D%28q%28z%7Cx%29%7C%7Cp%28z%7Cx%29%29+%3D++%5Cintop_%7Bx%7Dq%28x%29log%5Cfrac%7Bq%28x%29%7D%7Bp%28x%29%7D%5Cmathrm%7Bd%7Dx+" 
+alt=" D_{KL}(q||p) =  D_{KL}(q(z|x)||p(z|x)) =  \intop_{x}q(x)log\frac{q(x)}{p(x)}\mathrm{d}x ">
 
+This can be seen as the expaction with respect to the logarithmic difference between the two distributions.
+The KL-divergence has some nice properties:
+- KL is nonnegative, meaning it's always greater then 0 or 0, if the two distributions are exactly the same
+- The KL-divergence is not symmetric
 
+Nevertheless, we still have a problem. We still don't know <img src=
+"https://render.githubusercontent.com/render/math?math=%5Clarge+%5Ctextstyle+p%28z%7Cx%29" 
+alt="p(z|x)">. Using the rule of multiplication we can write:
+
+<img src=
+"https://render.githubusercontent.com/render/math?math=%5Clarge+%5Ctextstyle+p%28z%7Cx%29%3D%5Cfrac%7Bp%28x%2Cz%29%7D%7Bp%28x%29%7D%5C%5C%0Ap%28x%29+%3D+++%5Cintop_%7Bz%7Dp%28x%2Cz%29%5Cmathrm%7Bd%7Dz" 
+alt="p(z|x)=\frac{p(x,z)}{p(x)}\\
+p(x) =   \intop_{z}p(x,z)\mathrm{d}z">
 
 
 ### Variational autencoders in PyTorch
