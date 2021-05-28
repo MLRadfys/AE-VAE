@@ -184,6 +184,13 @@ alt="\theta"> --> <img src=
 "https://render.githubusercontent.com/render/math?math=%5Clarge+%5Ctextstyle+q%28z%7Cx%3B%5Ctheta%29" 
 alt="q(z|x;\theta)">.
 
+But how can we measure the similarity between two probability distributions?
+The most common metrics for this is the Kullback-Leibner divergence (KL-divergence), also called for realtive entropy, which measure the distance between two distributions:
+
+<img src=
+"https://render.githubusercontent.com/render/math?math=%5Clarge+%5Cdisplaystyle++D_%7BKL%7D%28q%7C%7Cp%29+%3D++D_%7BKL%7D%28q%28z%7Cx%29%7C%7Cp%28z%7Cx%29%29+%3D++%5Cintop_%7Bx%7Dq%28x%29log%28%5Cfrac%7Bq%28x%29%7D%7Bp%28x%29%7D%5Cmathrm%7Bd%7Dx+" 
+
+
 
 
 ### Variational autencoders in PyTorch
