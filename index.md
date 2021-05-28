@@ -158,7 +158,9 @@ The key concept of a variation autoencoder is "variational inference", which is 
 The VAE consists of hidden variables z and visible variables x (i.eg. our images). We want to say something about the probability distribution of the latent space variabels z, given samples from x (this is called for "inference" of "infer characteristics z from x").
 We can do this by using Bayes rule of probability:
 
-
+<img src=
+"https://render.githubusercontent.com/render/math?math=%5Clarge+%5Cdisplaystyle+%7Bp%28z%7Cx%29%7D++%3D++%5Cfrac%7Bp%28x%7Cz%29p%28z%29%7D%7Bp%28x%29%7D" 
+alt="{p(z|x)}  =  \frac{p(x|z)p(z)}{p(x)}">
 
 
 ### Variational autencoders in PyTorch
