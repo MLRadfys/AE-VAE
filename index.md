@@ -248,6 +248,30 @@ alt="\arg \min{L}D_{KL}(q||p) = \arg \min{L} = \arg \max{-L}">
 
 Mimizing the KL-divergence means that we are able to find the parameters that make our original probability distribution and our variational probability distribution similar.
 
+Now we can re-write the variational free energy L somewhat more, by replacing the definition of conditional probability and replacing it by the joint probability:
+
+<img src=
+"https://render.githubusercontent.com/render/math?math=%5Clarge+%5Cdisplaystyle+L+%3D++%5Cintop_%7Bz%7Dq%28z%7Cx%29%5B%5Clog%7B%5Cfrac%7Bq%28z%7Cx%29%7D%7Bp%28x%2Cz%29%7D%7D%5D%5Cmathrm%7Bd%7Dz+%3D+%5Cintop_%7Bz%7Dq%28z%7Cx%29%5B%5Clog%7B%5Cfrac%7Bq%28z%7Cx%29%7D%7Bp%28x%7Cz%29p%28z%29%7D%7D%5D%5Cmathrm%7Bd%7Dz" 
+alt="L =  \intop_{z}q(z|x)[\log{\frac{q(z|x)}{p(x,z)}}]\mathrm{d}z = \intop_{z}q(z|x)[\log{\frac{q(z|x)}{p(x|z)p(z)}}]\mathrm{d}z">
+
+If we know use the properties of the logarithm, we can split the above term into two integrals:
+
+<img src=
+"https://render.githubusercontent.com/render/math?math=%5Clarge+%5Cdisplaystyle+L+%3D++%5Cintop_%7Bz%7Dq%28z%7Cx%29%5Clog%7B%5Cfrac%7Bq%28z%7Cx%29%7D%7Bp%28z%29%7D%7D%5Cmathrm%7Bd%7Dz+-+%5Cintop_%7Bz%7Dq%28z%7Cx%29%5Clog%7Bp%28x%7Cz%29%7D%5Cmathrm%7Bd%7Dz" 
+alt="L =  \intop_{z}q(z|x)\log{\frac{q(z|x)}{p(z)}}\mathrm{d}z - \intop_{z}q(z|x)\log{p(x|z)}\mathrm{d}z">
+
+And, believe it or not, this was the final step in the derivation of the VAE loss function. 
+<img src=
+"https://render.githubusercontent.com/render/math?math=%5Clarge+%5Cdisplaystyle+L+%3D+D_%7BKL%7D%28q%28z%7Cx%29%7C%7Cp%28z%29%29-%5Cmathbb%7BE%7D_%7Bz%5Cbacksim+q%28z%7Cx%29%7D%5Clog%7Bp%28x%7Cz%29%7D" 
+alt="L = D_{KL}(q(z|x)||p(z))-\mathbb{E}_{z\backsim q(z|x)}\log{p(x|z)}">
+
+By analyzing the two terms, we can see that the first one is again a KL-divergence, where <img src=
+"https://render.githubusercontent.com/render/math?math=%5Clarge+%5Ctextstyle+q%28z%7Cx%29" 
+alt="q(z|x)"> is the variational density (the encoder) and <img src=
+"https://render.githubusercontent.com/render/math?math=%5Clarge+%5Ctextstyle+q%28z%29" 
+alt="q(z)"> a prior density over the latent variables. So by minimizing the KL-divergence, we make the overall density in the latent space equal to our prior distribution, which we design or choose on our own.
+
+The second part of the above equation is the expectation value over the latent space (the output of the encoder).
 
 ### Variational autencoders in PyTorch
 
