@@ -280,7 +280,33 @@ alt="q(z|x)">. By showing different samples X, we try to make <img src=
 "https://render.githubusercontent.com/render/math?math=%5Clarge+%5Ctextstyle+q%28z%7Cx%29" 
 alt="q(z|x)"> as similar as possible to our prior distribution <img src=
 "https://render.githubusercontent.com/render/math?math=%5Clarge+%5Ctextstyle+p%28z%29" 
-alt="p(z)">.
+alt="p(z)"> wich we design. The decoder <img src=
+"https://render.githubusercontent.com/render/math?math=%5Clarge+%5Ctextstyle+p%28x%7Cz%29" 
+alt="p(x|z)"> going from latent space to image space is used to evaluate the probability of seeing sample X given the latent variabels <img src=
+"https://render.githubusercontent.com/render/math?math=%5Clarge+%5Ctextstyle+z%28p%28x%7Cz%29%29" 
+alt="z(p(x|z))">, which is the log-likelihood.
+
+So how do we choose our variational distribution? We could in example use a Gaussian model:
+
+<img src=
+"https://render.githubusercontent.com/render/math?math=%5Clarge+%5Ctextstyle+q%28z%7Cx%29+%3D+%5Cmathcal%7BN%7D%28z%3B+%5Cmu%28x%29%2C+diag%28%5Csigma%5E2%29%29+%3D+%5Cfrac%7B1%7D%7B+%5Csqrt%7B2%5Cpi%7D+%5Cprod_%7Bd%7D%5E%7Bi%3D1%7D+%5Csigma_i%7D%5Cexp%5B-%5Cfrac%7B1%7D%7B2%7D+%5Csum%5Cnolimits_%7Bi%3D1%7D%5E%7Bd%7D%28%5Cfrac%7B+x_i+-+%5Cmu_i%7D%7B%5Csigma_i%7D%29%5E2%5D+" 
+alt="q(z|x) = \mathcal{N}(z; \mu(x), diag(\sigma^2)) = \frac{1}{ \sqrt{2\pi} \prod_{d}^{i=1} \sigma_i}\exp[-\frac{1}{2} \sum\nolimits_{i=1}^{d}(\frac{ x_i - \mu_i}{\sigma_i})^2] ">
+
+and we choose our prior as a standard normal distribution:
+
+<img src=
+"https://render.githubusercontent.com/render/math?math=%5Clarge+%5Ctextstyle+p%28z%29+%3D+%5Cmathcal%7BN%7D%280%2C1%29" 
+alt="p(z) = \mathcal{N}(0,1)">
+
+The latent variable z has a mean vector and a diagonal variance matrix, which are the outputs of the encoder. In addtion, we assume that our prior is a standard normal distribution. 
+
+For the case of a Gaussian, the KL-divergence is given as:
+
+<img src=
+"https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle+D_%7BKL%7D%28q%28z%7Cx%29%7C%7Cp%28z%29%29+%3D++%5Cintop_%7Bz%7Dq%28z%7Cx%29%5Clog%7B%5Cfrac%7Bq%28z%7Cx%29%7D%7Bp%28z%29%7D%7D%5Cmathrm%7Bd%7Dz+%3D+%5Cfrac%7B1%7D%7B2%7D++%5Csum%5Cnolimits_%7Bi%3D1%7D%5E%7Bd%7D%281%2B%5Clog%7B%5Csigma_i%5E2%28x%29+-+%5Cmu_i%5E2%28x%29+-+%5Csigma_i%5E2%28x%29%29%7D+" 
+alt="D_{KL}(q(z|x)||p(z)) =  \intop_{z}q(z|x)\log{\frac{q(z|x)}{p(z)}}\mathrm{d}z = \frac{1}{2}  \sum\nolimits_{i=1}^{d}(1+\log{\sigma_i^2(x) - \mu_i^2(x) - \sigma_i^2(x))} ">
+
+
 
 ### Variational autencoders in PyTorch
 
