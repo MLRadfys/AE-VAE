@@ -220,6 +220,27 @@ As we know that a normalized probability distribution always integrates to 1, th
 "https://render.githubusercontent.com/render/math?math=%5Clarge+%5Ctextstyle++D_%7BKL%7D%28q%7C%7Cp%29+%3D+++%5Cintop_%7Bz%7Dq%28z%7Cx%29%5Blog%5Cfrac%7Bq%28z%7Cx%29%7D%7Bp%28x%2Cz%29%7D%5D%5Cmathrm%7Bd%7Dz+%2B+%5Clog%7Bp%28x%29%7D" 
 alt=" D_{KL}(q||p) =   \intop_{z}q(z|x)[log\frac{q(z|x)}{p(x,z)}]\mathrm{d}z + \log{p(x)}">
 
+We can now call the first term for L, which is is also known as the varitational free energy or the upper bound to <img src=
+"https://render.githubusercontent.com/render/math?math=%5Clarge+%5Ctextstyle+-+%5Clog%7Bp%28x%29%7D" 
+alt="- \log{p(x)}"> :
+
+<img src=
+"https://render.githubusercontent.com/render/math?math=%5Clarge+%5Cdisplaystyle+L+%3D+++%5Cintop_%7Bz%7Dq%28z%7Cx%29%5Blog%5Cfrac%7Bq%28z%7Cx%29%7D%7Bp%28x%2Cz%29%7D%5D%5Cmathrm%7Bd%7Dz" 
+alt="L =   \intop_{z}q(z|x)[log\frac{q(z|x)}{p(x,z)}]\mathrm{d}z">
+
+The KL-divergence might then be written as:
+
+<img src=
+"https://render.githubusercontent.com/render/math?math=%5Clarge+%5Cdisplaystyle+D_%7BKL%7D%28q%7C%7Cp%29+%3D++L+%2B+%5Clog%7Bp%28x%29%7D" 
+alt="D_{KL}(q||p) =  L + \log{p(x)}">
+
+Finally, we define -L as the Evidence Lower Bound (ELBO): 
+
+<img src=
+"https://render.githubusercontent.com/render/math?math=%5Clarge+%5Cdisplaystyle+-+L+%3D+%5Clog%7Bp%28x%29%7D+-+D_%7BKL%7D%28q%7C%7Cp%29+%3D+%5Carg+%5Cmin%7BL%7D+%3D+%5Carg+%5Cmax%7B-L%7D" 
+alt="- L = \log{p(x)} - D_{KL}(q||p) = \arg \min{L} = \arg \max{-L}">
+
+
 ### Variational autencoders in PyTorch
 
 Now that we know how to build an autoencoder in PyTorch, lets code a variational autoencder.
