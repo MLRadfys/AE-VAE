@@ -135,6 +135,8 @@ Another cool thing is that the digit position actually corresponds to the positi
 
 ### Variational Autoencoders (VAE)
 
+![Image](https://github.com/MichaelLempart/AE-VAE/blob/gh-pages/resources/Img0_VAE.JPG)
+
 ### Variational autencoders in PyTorch
 
 Now that we know how to build an autoencoder in PyTorch, lets code a variational autoencder.
