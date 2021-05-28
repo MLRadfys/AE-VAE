@@ -274,6 +274,14 @@ alt="q(z)"> a prior density over the latent variables. So by minimizing the KL-d
 
 The second part of the above equation is the expectation value over the latent space (the output of the encoder).
 
+Ok, lets recap.... We input an image X into our encoder, which maps X to a density <img src=
+"https://render.githubusercontent.com/render/math?math=%5Clarge+%5Ctextstyle+q%28z%7Cx%29" 
+alt="q(z|x)">. By showing different samples X, we try to make <img src=
+"https://render.githubusercontent.com/render/math?math=%5Clarge+%5Ctextstyle+q%28z%7Cx%29" 
+alt="q(z|x)"> as similar as possible to our prior distribution <img src=
+"https://render.githubusercontent.com/render/math?math=%5Clarge+%5Ctextstyle+p%28z%29" 
+alt="p(z)">.
+
 ### Variational autencoders in PyTorch
 
 Now that we know how to build an autoencoder in PyTorch, lets code a variational autoencder.
