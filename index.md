@@ -145,9 +145,14 @@ If we would repeat the sampling process twice for the same input image, we would
 
 This is not the case with a normal autoencoder, where the latent space might not be smooth. Two latent space points that are close to each other, might result in two totally different output images, or two very similar input images might map into competlety different points in the latent space. In a VAE, we try to avoid this.
 
-
+The image below shows the architecture of a VAE. Like the normal autoencoder, the model consists of an encoder and a decoder part. 
 
 ![Image](https://github.com/MichaelLempart/AE-VAE/blob/gh-pages/resources/Img0_VAE.JPG)
+
+### A little bit of math....
+
+If you want to go straight into the implementation of a VAE in PyTorch, you can skip this part. If you are interested in the math behind a VAE, fasten your belt and continue reading....
+
 
 ### Variational autencoders in PyTorch
 
