@@ -206,8 +206,19 @@ alt="p(z|x) = \frac{p(x,z}{p(x)} = \frac{p(x,z}{ \intop_{z}p(x,z)\mathrm{d}z}">
 
 Again, the integral in instractable. By using some mathematical properties of conditional probabilty and log properties we can rewrite the KL-divergence:
 
-![ D_{KL}(q||p) \\=  \intop_{z}q(z|x)log\frac{q(z|x)}{p(z|x)}\mathrm{d}z =  \intop_{z}q(z|x)log(\frac{q(z|x)}{p(x,z)}p(x))\mathrm{d}z = \intop_{z}q(z|x)[log\frac{q(z|x)}{p(x,z)} + log p(x)]\mathrm{d}z  =  \intop_{z}q(z|x)[log\frac{q(z|x)}{p(x,z)}]\mathrm{d}z + log p(x)  \intop_{z}q(z|x)\mathrm{d}z](https://render.githubusercontent.com/render/math?math=%5Clarge+%5Cdisplaystyle++D_%7BKL%7D%28q%7C%7Cp%29+%3D++%5Cintop_%7Bz%7Dq%28z%7Cx%29log%5Cfrac%7Bq%28z%7Cx%29%7D%7Bp%28z%7Cx%29%7D%5Cmathrm%7Bd%7Dz+%3D++%5Cintop_%7Bz%7Dq%28z%7Cx%29log%28%5Cfrac%7Bq%28z%7Cx%29%7D%7Bp%28x%2Cz%29%7Dp%28x%29%29%5Cmathrm%7Bd%7Dz+%3D+%5Cintop_%7Bz%7Dq%28z%7Cx%29%5Blog%5Cfrac%7Bq%28z%7Cx%29%7D%7Bp%28x%2Cz%29%7D+%2B+log+p%28x%29%5D%5Cmathrm%7Bd%7Dz++%3D++%5Cintop_%7Bz%7Dq%28z%7Cx%29%5Blog%5Cfrac%7Bq%28z%7Cx%29%7D%7Bp%28x%2Cz%29%7D%5D%5Cmathrm%7Bd%7Dz+%2B+log+p%28x%29++%5Cintop_%7Bz%7Dq%28z%7Cx%29%5Cmathrm%7Bd%7Dz)
+<img src=
+"https://render.githubusercontent.com/render/math?math=%5Clarge+%5Cdisplaystyle++D_%7BKL%7D%28q%7C%7Cp%29+%3D++%5Cintop_%7Bz%7Dq%28z%7Cx%29log%5Cfrac%7Bq%28z%7Cx%29%7D%7Bp%28z%7Cx%29%7D%5Cmathrm%7Bd%7Dz+%3D++%5Cintop_%7Bz%7Dq%28z%7Cx%29log%28%5Cfrac%7Bq%28z%7Cx%29%7D%7Bp%28x%2Cz%29%7Dp%28x%29%29%5Cmathrm%7Bd%7Dz+%3D+%5Cintop_%7Bz%7Dq%28z%7Cx%29%5Blog%5Cfrac%7Bq%28z%7Cx%29%7D%7Bp%28x%2Cz%29%7D+%2B+log+p%28x%29%5D%5Cmathrm%7Bd%7Dz++%3D++%5Cintop_%7Bz%7Dq%28z%7Cx%29%5Blog%5Cfrac%7Bq%28z%7Cx%29%7D%7Bp%28x%2Cz%29%7D%5D%5Cmathrm%7Bd%7Dz+%2B+log+p%28x%29++%5Cintop_%7Bz%7Dq%28z%7Cx%29%5Cmathrm%7Bd%7Dz" 
+alt=" D_{KL}(q||p) =  \intop_{z}q(z|x)log\frac{q(z|x)}{p(z|x)}\mathrm{d}z =  \intop_{z}q(z|x)log(\frac{q(z|x)}{p(x,z)}p(x))\mathrm{d}z = \intop_{z}q(z|x)[log\frac{q(z|x)}{p(x,z)} + log p(x)]\mathrm{d}z  =  \intop_{z}q(z|x)[log\frac{q(z|x)}{p(x,z)}]\mathrm{d}z + log p(x)  \intop_{z}q(z|x)\mathrm{d}z">
 
+Wow.... What a mess... Nevertheless, the positive thing is that we know can get rid of the last term <img src=
+"https://render.githubusercontent.com/render/math?math=%5Clarge+%5Ctextstyle+%5Cintop_%7Bz%7Dq%28z%7Cx%29%5Cmathrm%7Bd%7Dz" 
+alt="\intop_{z}q(z|x)\mathrm{d}z">.
+
+As we know that a normalized probability distribution always integrates to 1, this term becomes 1 as well and we are left with:
+
+<img src=
+"https://render.githubusercontent.com/render/math?math=%5Clarge+%5Ctextstyle++D_%7BKL%7D%28q%7C%7Cp%29+%3D+++%5Cintop_%7Bz%7Dq%28z%7Cx%29%5Blog%5Cfrac%7Bq%28z%7Cx%29%7D%7Bp%28x%2Cz%29%7D%5D%5Cmathrm%7Bd%7Dz+%2B+%5Clog%7Bp%28x%29%7D" 
+alt=" D_{KL}(q||p) =   \intop_{z}q(z|x)[log\frac{q(z|x)}{p(x,z)}]\mathrm{d}z + \log{p(x)}">
 
 ### Variational autencoders in PyTorch
 
