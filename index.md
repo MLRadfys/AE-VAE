@@ -189,6 +189,7 @@ The most common metrics for this is the Kullback-Leibner divergence (KL-divergen
 
 <img src=
 "https://render.githubusercontent.com/render/math?math=%5Clarge+%5Cdisplaystyle++D_%7BKL%7D%28q%7C%7Cp%29+%3D++D_%7BKL%7D%28q%28z%7Cx%29%7C%7Cp%28z%7Cx%29%29+%3D++%5Cintop_%7Bx%7Dq%28x%29log%28%5Cfrac%7Bq%28x%29%7D%7Bp%28x%29%7D%5Cmathrm%7Bd%7Dx+" 
+alt=" D_{KL}(q||p) =  D_{KL}(q(z|x)||p(z|x)) =  \intop_{x}q(x)log(\frac{q(x)}{p(x)}\mathrm{d}x ">
 
 
 
