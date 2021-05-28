@@ -5,6 +5,8 @@ On this page I will present the basic principles of autoencoders (AE) and variat
 
 ### Autoencoders (AE)
 
+![Image](https://github.com/MichaelLempart/AE-VAE/blob/gh-pages/resources/Img0_AE.JPG)
+
 ### Autencoders in PyTorch
 
 We now learn how to setup an autoencoder in PyTorch and train in on the MNIST dataset.
