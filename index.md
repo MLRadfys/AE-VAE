@@ -136,11 +136,16 @@ Another cool thing is that the digit position actually corresponds to the positi
 ### Variational Autoencoders (VAE)
 
 Lets take a look at variational autoencoders or short VAE. A VAE is a so called generative model, belonging to the field of generative learning, where we observe a probability function by samples and try to learn this probability distribution as well as a way to create completely new samples. 
+
 While the normal autoencoder describes the latent space in a deterministic way, a VAE describes the latent space in a probabilistic way. Instead of just mapping an input image x to a latent space vector z, a VAE maps the input image x to a probabilistic representation (i.eg. a vector of means and variances/uncertainties). For each given input, aach latent space attribute is represented by a probability distribution. When we want to decode the image, we randomly sample from the latent space distribution, which generates a vector z that can be used by the decoder of the VAE.
+
 If we would repeat the sampling process twice for the same input image, we would end up with two images that are very similar to the input, but also very similar to each other. This is because we still try to minimize the reconstruction error between the input and the output of the VAE, leadning to a smooth latent space representation.
-This is not the case with a normal autoencoder, where the latent space might not be smooth. Two latent space points that are close to each other, might result in two totally different output images, or two very similar input images might map into competlety different points in the latent space. In a VAE, we try to avoid this.
 
 ![Image](https://github.com/MichaelLempart/AE-VAE/blob/gh-pages/resources/Img4_VAE.jpg)
+
+This is not the case with a normal autoencoder, where the latent space might not be smooth. Two latent space points that are close to each other, might result in two totally different output images, or two very similar input images might map into competlety different points in the latent space. In a VAE, we try to avoid this.
+
+
 
 ![Image](https://github.com/MichaelLempart/AE-VAE/blob/gh-pages/resources/Img0_VAE.JPG)
 
