@@ -201,9 +201,12 @@ Nevertheless, we still have a problem. We still don't know <img src=
 alt="p(z|x)">. Using the rule of multiplication we can write:
 
 <img src=
-"https://render.githubusercontent.com/render/math?math=%5Clarge+%5Ctextstyle+p%28z%7Cx%29%3D%5Cfrac%7Bp%28x%2Cz%29%7D%7Bp%28x%29%7D%5C%5C%0Ap%28x%29+%3D+++%5Cintop_%7Bz%7Dp%28x%2Cz%29%5Cmathrm%7Bd%7Dz" 
-alt="p(z|x)=\frac{p(x,z)}{p(x)}\\
-p(x) =   \intop_{z}p(x,z)\mathrm{d}z">
+"https://render.githubusercontent.com/render/math?math=%5Clarge+%5Cdisplaystyle+p%28z%7Cx%29%3D%5Cfrac%7Bp%28x%2Cz%29%7D%7Bp%28x%29%7D%0A" 
+alt="p(z|x)=\frac{p(x,z)}{p(x)}
+">
+<img src=
+"https://render.githubusercontent.com/render/math?math=%5Clarge+%5Cdisplaystyle+p%28x%29+%3D+++%5Cintop_%7Bz%7Dp%28x%2Cz%29%5Cmathrm%7Bd%7Dz" 
+alt="p(x) =   \intop_{z}p(x,z)\mathrm{d}z">
 
 
 ### Variational autencoders in PyTorch
