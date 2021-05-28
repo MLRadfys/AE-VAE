@@ -171,8 +171,10 @@ alt="p(x)"> is extremely difficult to evaluate (if even possible):
 alt="p(x)=\intop_{z} p(x|z)p(z)\mathrm{d}z ">
 
 The above integral is intractable...
-One way to solve this issue is by using variational inference, mentionend in the beginning. In variational inference, we replace "https://render.githubusercontent.com/render/math?math=%5Clarge+%5Ctextstyle+p%28x%29" 
-alt="p(z|x)"> by "https://render.githubusercontent.com/render/math?math=%5Clarge+%5Ctextstyle+p%28x%29" 
+One way to solve this issue is by using variational inference, mentionend in the beginning. In variational inference, we replace <img src=
+"https://render.githubusercontent.com/render/math?math=%5Clarge+%5Ctextstyle+p%28z%7Cx%29" 
+alt="p(z|x)"> by <img src=
+"https://render.githubusercontent.com/render/math?math=%5Clarge+%5Ctextstyle+q%28z%7Cx%29" 
 alt="q(z|x)">, which is a distribution we know and that we can evaluate. This new distribution is called for "variational distribution".
 
 ### Variational autencoders in PyTorch
