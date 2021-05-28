@@ -260,7 +260,8 @@ If we know use the properties of the logarithm, we can split the above term into
 "https://render.githubusercontent.com/render/math?math=%5Clarge+%5Cdisplaystyle+L+%3D++%5Cintop_%7Bz%7Dq%28z%7Cx%29%5Clog%7B%5Cfrac%7Bq%28z%7Cx%29%7D%7Bp%28z%29%7D%7D%5Cmathrm%7Bd%7Dz+-+%5Cintop_%7Bz%7Dq%28z%7Cx%29%5Clog%7Bp%28x%7Cz%29%7D%5Cmathrm%7Bd%7Dz" 
 alt="L =  \intop_{z}q(z|x)\log{\frac{q(z|x)}{p(z)}}\mathrm{d}z - \intop_{z}q(z|x)\log{p(x|z)}\mathrm{d}z">
 
-And, believe it or not, this was the final step in the derivation of the VAE loss function. 
+And, believe it or not, this was the final step in the derivation of the VAE loss function:
+
 <img src=
 "https://render.githubusercontent.com/render/math?math=%5Clarge+%5Cdisplaystyle+L+%3D+D_%7BKL%7D%28q%28z%7Cx%29%7C%7Cp%28z%29%29-%5Cmathbb%7BE%7D_%7Bz%5Cbacksim+q%28z%7Cx%29%7D%5Clog%7Bp%28x%7Cz%29%7D" 
 alt="L = D_{KL}(q(z|x)||p(z))-\mathbb{E}_{z\backsim q(z|x)}\log{p(x|z)}">
