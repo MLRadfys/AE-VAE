@@ -10,6 +10,9 @@ This can be achieved by an encoder and decoder like model architecture. The enco
 
 ![Image](https://github.com/MichaelLempart/AE-VAE/blob/gh-pages/resources/Img0_AE.JPG)
 
+<img src=
+"(https://github.com/MichaelLempart/AE-VAE/blob/gh-pages/resources/Img0_AE.JP">
+
 Autoencoders can be used for several different types of application ,like in example:
 - dimensional reduction
 - feature extraction: train the AE, extract latent space features and feed them into another neural network
