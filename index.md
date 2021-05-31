@@ -333,7 +333,7 @@ alt="z = \mu(x) + \sigma(x) \odot \epsilon
 
 This can be visualized like this:
 
-![Image](https://github.com/MichaelLempart/AE-VAE/blob/gh-pages/resources/reparametrization_trick.JPG)
+![Image](https://github.com/MichaelLempart/AE-VAE/blob/gh-pages/resources/reparametrization_trick.jpg)
 
 
 The gray fields are deterministic, while the blue ones are random. Without using the parametrization trick, a random field (or node), is blocking the backpropagation flow. If we now replace the random node by our unit Gaussian and the shift and scale operations, we can see that we get a non-blocked, continues backpropagation path. We still can't compute the gradient of the unit Gaussian, but we don't care! There are no parameters in the unit Gaussian which we want to change or optimize. 
