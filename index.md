@@ -8,9 +8,9 @@ On this page I will present the basic principles of autoencoders (AE) and variat
 Autoencoders are neural networks that can perform dimensional reduction of data. Through optimization, the network learns a non-linear transformation from in example an image space X, to a latent space Z, and back from latent space Z to space X.
 This can be achieved by an encoder and decoder like model architecture. The encoder encodes X to Z, and the decoder decodes Z to X. 
 
+![Image](https://github.com/MichaelLempart/AE-VAE/blob/gh-pages/resources/Img0_AE.JPG)
 
-<img src=
-"(https://github.com/MichaelLempart/AE-VAE/blob/gh-pages/resources/Img0_AE.JP">
+<img src="resources/Img0_AE.JPG" class="img-responsive" alt=""> </div>
 
 Autoencoders can be used for several different types of application ,like in example:
 - dimensional reduction
