@@ -331,6 +331,34 @@ alt="\epsilon\backsim\mathcal{N}(0,1)
 alt="z = \mu(x) + \sigma(x) \odot \epsilon 
 ">
 
+This can be visualized like this:
+
+![Image](https://github.com/MichaelLempart/AE-VAE/blob/gh-pages/resources/reparametrization_trick.JPG)
+
+
+The gray fields are deterministic, while the blue ones are random. Without using the parametrization trick, a random field (or node), is blocking the backpropagation flow. If we now replace the random node by our unit Gaussian and the shift and scale operations, we can see that we get a non-blocked, continues backpropagation path. We still can't compute the gradient of the unit Gaussian, but we don't care! There are no parameters in the unit Gaussian which we want to change or optimize. 
+
+The last term we haven't talked about is the expectation value of making the observation x given the latent vector z and the decoder parameters <img src=
+"https://render.githubusercontent.com/render/math?math=%5Clarge+%5Ctextstyle+%5Ctheta" 
+alt="\theta">:
+
+<img src=
+"https://render.githubusercontent.com/render/math?math=%5Clarge+%5Cdisplaystyle+%5Cmathbb%7BE%7D_%7Bz%5Cbacksim+q%28z%7Cx%29%7D%5Clog%7Bp%28x%7Cz%3B%5Ctheta_%7Bdecoder%7D%29%7D+%3D+%5Clog%7Bp%28x%7Cz%3B%5Ctheta_%7Bdecoder%7D%29%7D" 
+alt="\mathbb{E}_{z\backsim q(z|x)}\log{p(x|z;\theta_{decoder})} = \log{p(x|z;\theta_{decoder})}">
+
+As we are using the stoachistic gradient descend to optimize our model, we replace the expected value by a single sample.
+Now we can see that we have a Maximum likelihood problem, which can be used to find the parameters of a probability distribution. Depending on the problem we are working on, we have to decide on the type of distribution. In the MNIST case, where pixels are binary (0 or 1), we us a sigmoid output layer. This can be thought of as a Bernoulli distribution, where the negative log-likelihood of the Bernoulli distribution is the binary cross-entropy (our reconstruction loss):
+
+<img src=
+"https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle+L%28%5Ctheta%29+%3D++%5Csum%5Cnolimits_%7Bi%3D1%7D%5E%7BN%7Dx_i%5Clog%7B%5Chat%7Bx_i%7D%28x%2C%5Ctheta%29%7D%2B%281-x_i%29%5Clog%7B%5B1-%5Chat%7Bx_i%7D%28x%2C%5Ctheta%29%5D%7D" 
+alt="L(\theta) =  \sum\nolimits_{i=1}^{N}x_i\log{\hat{x_i}(x,\theta)}+(1-x_i)\log{[1-\hat{x_i}(x,\theta)]}">
+
+With that, the final loss function for the MNIST dataset becomes:
+
+<img src=
+"https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle+L+%3D+D_%7BKL%7D%28q%28z%7Cx%29%7C%7Cp%28z%29%29-%5Cmathbb%7BE%7D_%7Bz%5Cbacksim+q%28z%7Cx%29%7D%5Clog%7Bp%28x%7Cz%29%7D+%3D+%5Cfrac%7B1%7D%7B2%7D++%5Csum%5Cnolimits_%7Bi%3D1%7D%5E%7Bd%7D%281%2B%5Clog%7B%5Csigma_i%5E2%28x%29+-+%5Cmu_i%5E2%28x%29+-+%5Csigma_i%5E2%28x%29%29%7D+-+%5Csum%5Cnolimits_%7Bi%3D1%7D%5E%7BN%7Dx_i%5Clog%7B%5Chat%7Bx_i%7D%28x%2C%5Ctheta%29%7D%2B%281-x_i%29%5Clog%7B%5B1-%5Chat%7Bx_i%7D%28x%2C%5Ctheta%29%5D%7D" 
+alt="L = D_{KL}(q(z|x)||p(z))-\mathbb{E}_{z\backsim q(z|x)}\log{p(x|z)} = \frac{1}{2}  \sum\nolimits_{i=1}^{d}(1+\log{\sigma_i^2(x) - \mu_i^2(x) - \sigma_i^2(x))} - \sum\nolimits_{i=1}^{N}x_i\log{\hat{x_i}(x,\theta)}+(1-x_i)\log{[1-\hat{x_i}(x,\theta)]}">
+
 
 
 ### Variational autencoders in PyTorch
