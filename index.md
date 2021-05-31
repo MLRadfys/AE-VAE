@@ -359,8 +359,7 @@ With that, the final loss function for the MNIST dataset becomes:
 "https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle+L+%3D+D_%7BKL%7D%28q%28z%7Cx%29%7C%7Cp%28z%29%29-%5Cmathbb%7BE%7D_%7Bz%5Cbacksim+q%28z%7Cx%29%7D%5Clog%7Bp%28x%7Cz%29%7D+%3D+%5Cfrac%7B1%7D%7B2%7D++%5Csum%5Cnolimits_%7Bi%3D1%7D%5E%7Bd%7D%281%2B%5Clog%7B%5Csigma_i%5E2%28x%29+-+%5Cmu_i%5E2%28x%29+-+%5Csigma_i%5E2%28x%29%29%7D+-+%5Csum%5Cnolimits_%7Bi%3D1%7D%5E%7BN%7Dx_i%5Clog%7B%5Chat%7Bx_i%7D%28x%2C%5Ctheta%29%7D%2B%281-x_i%29%5Clog%7B%5B1-%5Chat%7Bx_i%7D%28x%2C%5Ctheta%29%5D%7D" 
 alt="L = D_{KL}(q(z|x)||p(z))-\mathbb{E}_{z\backsim q(z|x)}\log{p(x|z)} = \frac{1}{2}  \sum\nolimits_{i=1}^{d}(1+\log{\sigma_i^2(x) - \mu_i^2(x) - \sigma_i^2(x))} - \sum\nolimits_{i=1}^{N}x_i\log{\hat{x_i}(x,\theta)}+(1-x_i)\log{[1-\hat{x_i}(x,\theta)]}">
 
-
-
+That was more than a little bit of math and I hope you stayed with me during this section. If not, all you need is the above loss function and some knowledge about the functional principle of a variational autoencoder in order to implement it. Now, lets get our hands dirty and implement a VAE in PyTorch :-)
 ### Variational autencoders in PyTorch
 
 Now that we know how to build an autoencoder in PyTorch, lets code a variational autoencder.
