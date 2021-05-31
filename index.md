@@ -8,7 +8,7 @@ On this page I will present the basic principles of autoencoders (AE) and variat
 Autoencoders are neural networks that can perform dimensional reduction of data. Through optimization, the network learns a non-linear transformation from in example an image space X, to a latent space Z, and back from latent space Z to space X.
 This can be achieved by an encoder and decoder like model architecture. The encoder encodes X to Z, and the decoder decodes Z to X. 
 
-<img src="resources/Img0_AE.JPG" class="img-responsive" alt=""> </div>
+<img src="resources/Img0_AE.JPG" class="img-responsive" alt="">
 
 Autoencoders can be used for several different types of application ,like in example:
 - dimensional reduction
@@ -120,7 +120,7 @@ def plot_latent(ae, data, num_batches=100):
     plt.show()
 ```
 
-<img src="resources/Img1_AE.JPG" class="img-responsive" alt=""> </div>
+<img src="resources/Img1_AE.JPG" class="img-responsive" alt="">
 
 We see that similar digits are plottet next to each other, i.eg. the digit 0 and the digit 6.
 
@@ -140,7 +140,7 @@ def reconstruct_image(ae, r0=(-5, 10), r1=(-10, 5), n=12):
     plt.imshow(img, extent=[*r0, *r1])
 ```
 
-<img src="resources/Img2_AE.JPG" class="img-responsive" alt=""> </div>
+<img src="resources/Img2_AE.JPG" class="img-responsive" alt="">
 
 We can see that we actually got digit looking images, even though not all of them are perfect.
 Another cool thing is that the digit position actually corresponds to the position in the 2D scatter plot.
@@ -154,13 +154,13 @@ While the normal autoencoder describes the latent space in a deterministic way, 
 If we would repeat the sampling process twice for the same input image, we would end up with two images that are very similar to the input, but also very similar to each other. This is because we still try to minimize the reconstruction error between the input and the output of the VAE, leadning to a smooth latent space representation.
 
 
-<img src="resources/Img4_VAE.JPG" class="img-responsive" alt=""> </div>
+<img src="resources/Img4_VAE.JPG" class="img-responsive" alt="">
 
 This is not the case with a normal autoencoder, where the latent space might not be smooth. Two latent space points that are close to each other, might result in two totally different output images, or two very similar input images might map into competlety different points in the latent space. In a VAE, we try to avoid this.
 
 The image below shows the architecture of a VAE. Like the normal autoencoder, the model consists of an encoder and a decoder part. 
 
-<img src="resources/Img0_VAE.JPG" class="img-responsive" alt=""> </div>
+<img src="resources/Img0_VAE.JPG" class="img-responsive" alt="">
 
 ### A little bit of math....
 
@@ -469,7 +469,7 @@ def train_vae(vae, data, epochs=20):
 
 After training, we repeat our experiments. We create a 2D scatterplot of the latent space, and we sample from the latent space.
 
-<img src="resources/Img1_VAE.JPG" class="img-responsive" alt=""> </div>
+<img src="resources/Img1_VAE.JPG" class="img-responsive" alt="">
 
 We can observe that the latent space variabels are much closer to each other and seem to be more similar to a Gaussian distribution. Like for the autoencoder, digits that are similar are mapped next to each other. Overall the latent space is much smoother and more compact when compared to the autoencoder.
 
@@ -498,5 +498,5 @@ def interpolate(autoencoder, x_1, x_2, n=12):
     plt.yticks([])
     plt.show()
 ```
-<img src="resources/Img3_VAE.JPG" class="img-responsive" alt=""> </div>
+<img src="resources/Img3_VAE.JPG" class="img-responsive" alt="">
 
