@@ -306,7 +306,33 @@ For the case of a Gaussian, the KL-divergence is given as:
 "https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle+D_%7BKL%7D%28q%28z%7Cx%29%7C%7Cp%28z%29%29+%3D++%5Cintop_%7Bz%7Dq%28z%7Cx%29%5Clog%7B%5Cfrac%7Bq%28z%7Cx%29%7D%7Bp%28z%29%7D%7D%5Cmathrm%7Bd%7Dz+%3D+%5Cfrac%7B1%7D%7B2%7D++%5Csum%5Cnolimits_%7Bi%3D1%7D%5E%7Bd%7D%281%2B%5Clog%7B%5Csigma_i%5E2%28x%29+-+%5Cmu_i%5E2%28x%29+-+%5Csigma_i%5E2%28x%29%29%7D+" 
 alt="D_{KL}(q(z|x)||p(z)) =  \intop_{z}q(z|x)\log{\frac{q(z|x)}{p(z)}}\mathrm{d}z = \frac{1}{2}  \sum\nolimits_{i=1}^{d}(1+\log{\sigma_i^2(x) - \mu_i^2(x) - \sigma_i^2(x))} ">
 
+Lets write our derived loss function, using the parameters <img src=
+"https://render.githubusercontent.com/render/math?math=%5Ctextstyle+%5Ctheta%0A" 
+alt="\theta
+"> we want to optimize:
 
+<img src=
+"https://render.githubusercontent.com/render/math?math=%5Clarge+%5Cdisplaystyle+L+%3D++-+%5Cmathbb%7BE%7D_%7Bz%5Cbacksim+q%28z%7Cx%29%7D%5Clog%7Bp%28x%7Cz%2C%5Ctheta_%7Bdecoder%7D%29%7D+%2B+D_%7BKL%7D%28q%28z%7Cx%2C%5Ctheta_%7Bencoder%7D%29%7C%7Cp%28z%29%29+" 
+alt="L =  - \mathbb{E}_{z\backsim q(z|x)}\log{p(x|z,\theta_{decoder})} + D_{KL}(q(z|x,\theta_{encoder})||p(z)) ">
+
+One final problem arises. We said that we sample z from the probability distribution <img src=
+"https://render.githubusercontent.com/render/math?math=%5Ctextstyle+q%28z%7Cx%29%0A" 
+alt="q(z|x)
+">. Unfortunately, the process of sampling from a probability distribution is not differntiable. We can't compute the derivative of a sampling distribution with respect to it's input. Nevertheless, we can use the so called parametrization trick. Instead of sampling from <img src=
+"https://render.githubusercontent.com/render/math?math=%5Ctextstyle+q%28z%7Cx%29%0A" 
+alt="q(z|x), we sample from a unit Gaussian distribution, which has zero mean and a standard deviation of 1. This is still a random sampling process, but the unit Gaussian does not have any parameters that we want to optimize. When we ccompute the latent variable z, we can scale and shift it by the mean and the variance of the unit Gaussian.
+
+- take a unit Gaussian
+<img src=
+"https://render.githubusercontent.com/render/math?math=%5Clarge+%5Cdisplaystyle+%5Cepsilon%5Cbacksim%5Cmathcal%7BN%7D%280%2C1%29%0A" 
+alt="\epsilon\backsim\mathcal{N}(0,1)
+">
+-shift the unit Gaussian by the mean value and and scale it. Mean and variance come from the latent distribution
+<img src=
+"https://render.githubusercontent.com/render/math?math=%5Clarge+%5Cdisplaystyle+z+%3D+%5Cmu%28x%29+%2B+%5Csigma%28x%29+%5Codot+%5Cepsilon+%0A" 
+alt="z = \mu(x) + \sigma(x) \odot \epsilon 
+">
+">
 
 ### Variational autencoders in PyTorch
 
