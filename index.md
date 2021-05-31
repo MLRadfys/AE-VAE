@@ -473,7 +473,7 @@ After training, we repeat our experiments. We create a 2D scatterplot of the lat
 
 We can observe that the latent space variabels are much closer to each other and seem to be more similar to a Gaussian distribution. Like for the autoencoder, digits that are similar are mapped next to each other. Overall the latent space is much smoother and more compact when compared to the autoencoder.
 
-<img src="resources/Img2_VAE.JPG" class="img-responsive" alt=""> </div>
+<img src="resources/Img2_VAE.JPG" class="img-responsive" alt="">
 
 When we sample from the latent space, we can generate digit-like images, which position correspond to the position of the 2D scatter plot.
 
