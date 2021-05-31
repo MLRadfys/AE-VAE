@@ -319,20 +319,19 @@ One final problem arises. We said that we sample z from the probability distribu
 "https://render.githubusercontent.com/render/math?math=%5Ctextstyle+q%28z%7Cx%29%0A" 
 alt="q(z|x)
 ">. Unfortunately, the process of sampling from a probability distribution is not differntiable. We can't compute the derivative of a sampling distribution with respect to it's input. Nevertheless, we can use the so called parametrization trick. Instead of sampling from <img src=
-"https://render.githubusercontent.com/render/math?math=%5Ctextstyle+q%28z%7Cx%29%0A" 
-alt="q(z|x), we sample from a unit Gaussian distribution, which has zero mean and a standard deviation of 1. This is still a random sampling process, but the unit Gaussian does not have any parameters that we want to optimize. When we ccompute the latent variable z, we can scale and shift it by the mean and the variance of the unit Gaussian.
+"https://render.githubusercontent.com/render/math?math=%5Clarge+%5Ctextstyle+q%28z%7Cx%29" 
+alt="q(z|x)">, we sample from a unit Gaussian distribution, which has zero mean and a standard deviation of 1. This is still a random sampling process, but the unit Gaussian does not have any parameters that we want to optimize. When we ccompute the latent variable z, we can scale and shift it by the mean and the variance of the unit Gaussian.
 
-- take a unit Gaussian
-<img src=
+- take a unit Gaussian <img src=
 "https://render.githubusercontent.com/render/math?math=%5Clarge+%5Cdisplaystyle+%5Cepsilon%5Cbacksim%5Cmathcal%7BN%7D%280%2C1%29%0A" 
 alt="\epsilon\backsim\mathcal{N}(0,1)
 ">
--shift the unit Gaussian by the mean value and and scale it. Mean and variance come from the latent distribution
-<img src=
+- shift the unit Gaussian by the mean value and and scale it. Mean and variance come from the latent distribution <img src=
 "https://render.githubusercontent.com/render/math?math=%5Clarge+%5Cdisplaystyle+z+%3D+%5Cmu%28x%29+%2B+%5Csigma%28x%29+%5Codot+%5Cepsilon+%0A" 
 alt="z = \mu(x) + \sigma(x) \odot \epsilon 
 ">
-">
+
+
 
 ### Variational autencoders in PyTorch
 
