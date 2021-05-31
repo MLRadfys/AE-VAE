@@ -5,7 +5,18 @@ On this page I will present the basic principles of autoencoders (AE) and variat
 
 ### Autoencoders (AE)
 
+Autoencoders are neural networks that can perform dimensional reduction of data. Through optimization, the network learns a non-linear transformation from in example an image space X, to a latent space Z, and back from latent space Z to space X.
+This can be achieved by an encoder and decoder like model architecture. The encoder encodes X to Z, and the decoder decodes Z to X. 
+
 ![Image](https://github.com/MichaelLempart/AE-VAE/blob/gh-pages/resources/Img0_AE.JPG)
+
+Autoencoders can be used for several different types of application ,like in example:
+- dimensional reduction
+- feature extraction: train the AE, extract latent space features and feed them into another neural network
+
+Nevertheless, there is a problem with autoencoders: It does not learn or generate a smooth and contious latent space. We will see the exact difference when implementing autoencoders and compare them to variational autoencoders by visualizing the latent space.
+
+Now, lets dive right into it and code our first autoencoder in PyTorch.
 
 ### Autencoders in PyTorch
 
